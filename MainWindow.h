@@ -6,6 +6,7 @@
 
   class GameInfo;
   class GraphicRender;
+  class GameRender;
   class ControlPanel;
 
 class MainWindow : public QWidget
@@ -19,10 +20,9 @@ class MainWindow : public QWidget
  protected:
   GameInfo *Info;
   GraphicRender *Render;
+  GameRender *GameEngine;
   ControlPanel *Panel;
-  int TimerID;
 
-  void timerEvent(QTimerEvent *event);
   void keyPressEvent(QKeyEvent *event);
   void keyReleaseEvent(QKeyEvent *event);
 

@@ -2,8 +2,9 @@
 #include <QList>
 #include <QPolygonF>
 
-#include "GameInfo.h"
 #include "Map.h"
+#include "GameUnit.h"
+#include "GameInfo.h"
 
 GameInfo::GameInfo()
 {
@@ -18,16 +19,44 @@ GameInfo::GameInfo()
  FramesPerSecond = 100.0;
 
  DrawUnitsPath = 0;
+ DrawSelection = 0;
 
  Global_Time = 0;
  FrameTime = (int)(1000.0/FramesPerSecond);
  if (FrameTime <= 0) FrameTime = 2;
 
  Map = new GameMap(this);
+ GameUnits = new QList<GameUnit *>;
+/***/
+ GameUnit *unit = new GameUnit(this);
+ GameUnits->append(unit);
+/***/
 }
 
 GameInfo::~GameInfo()
 {
 
 }
+
+void GameInfo::SelectUnitsInArea(QRectF *Area)
+{
+ for (int i=0; i<GameUnits->length(); i++)
+  {
+   if (((*GameUnits)[i])->State.Position->intersects(*Area));
+    {
+     SelectedObjects.append(i);
+     ((*GameUnits)[i])->SetSelection(1);
+    }
+  }
+}
+
+void GameInfo::UnSelectAllUnits()
+{
+ for (int i=0; i<SelectedObjects.length(); i++)
+  {
+   ((*GameUnits)[SelectedObjects[i]])->SetSelection(0);
+  }
+ SelectedObjects.clear();
+}
+
 

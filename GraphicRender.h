@@ -3,11 +3,8 @@
   #define GraphicRender_H
 
   #include <QWidget>
-  #include <QBrush>
-  #include <QPen>
-  #include <QPixmap>
 
-  #include "GameInfo.h"
+  class GameInfo;
 
 class GraphicRender : public QWidget
 {
@@ -15,6 +12,7 @@ class GraphicRender : public QWidget
 
  protected:
   GameInfo *Info;
+  int TimerID;
   bool antialiased;
 
  public:
@@ -27,6 +25,7 @@ class GraphicRender : public QWidget
 
  protected:
   void paintEvent(QPaintEvent *event);
+  void timerEvent(QTimerEvent *event);
 
   void mousePressEvent(QMouseEvent *event);
   void mouseReleaseEvent(QMouseEvent *event);

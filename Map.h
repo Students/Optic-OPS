@@ -6,7 +6,7 @@
   #include <QList>
   #include <QPolygonF>
 
-class GameInfo;
+  class GameInfo;
 
 class GameMap : public QObject
 {

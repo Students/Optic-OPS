@@ -8,12 +8,12 @@
 GameMap::GameMap(GameInfo *info)
 {
  Info = info;
- Size.setRect(0.0, 0.0, 3000.0,3000.0); /// ...
+ Size.setRect(0.0, 0.0, 3000.0,3000.0); /// Указать размеры области (всей карты)
  Buildings = new QList<QPolygonF *>;
  Roads     = new QList<QPolygonF *>;
  Waters    = new QList<QPolygonF *>;
 
- /// ...
+ /// Здесь должна быть инициализация матрицы загруженных секторов карты
 
  LoadLocation();
 }
@@ -52,7 +52,7 @@ void GameMap::LoadLocation(QRectF *Location)
   }
  else
   {
-   /// ...
+   /// Здесь должна быть загрузка требуемой части карты
   }
 }
 
